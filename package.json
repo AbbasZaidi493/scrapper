@@ -1,0 +1,31 @@
+{
+  "name": "scraper-client",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "npm-run-all": "3.1.1",
+    "react-scripts": "1.0.13"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "babel-cli": "^6.26.0",
+    "babel-preset-node6": "^11.0.0",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "eslint": "^4.7.2",
+    "express": "^4.15.4",
+    "nodemon": "^1.12.1",
+    "url-metadata": "^2.1.7"
+  },
+  "scripts": {
+    "client": "react-scripts start",
+    "start": "npm-run-all --parallel client server",
+    "server": "nodemon --exec babel-node index.js",
+    "lint": "eslint --ext .js .",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
