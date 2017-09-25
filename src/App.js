@@ -70,20 +70,21 @@ class App extends Component {
       },
       h3: {
         fontWeight: 600,
-        color: '#ffffff',
+        color: '#979797',
         marginTop: '0px',
         marginBottom: '10px'
       },
       block: {
         display: 'flex',
         flexDirection: 'column',
-        marginTop: '60px',
+        marginTop: '150px',
         padding: '15px',
-        minWidth: '400px',
-        maxWidth: '400px',
+        minWidth: '900px',
+        maxWidth: '900px',
         borderRadius: '2px',
-        minHeight: '700px',
+        minHeight: '230px',
         border: '1px solid #ffffff',
+        background: '#ffffff'
       },
       span: {
         display: 'inline-flex',
@@ -100,26 +101,49 @@ class App extends Component {
       },
       validationSpan: {
         marginTop: '10px',
-        color: '#ffffff',
+        color: '#000000',
         fontSize: '12px',
         textAlign: 'center'
       },
       scrapeSpan: {
-        color: '#ffffff',
-        fontSize: '10px',
+        color: '#000000',
+        fontSize: '14px',
         marginLeft: '5px',
         marginTop: '10px'
       },
       ul: {
         color: '#ffffff',
-        listStyleType: 'none'
+        listStyleType: 'none',
       },
-      li: {
-        fontSize: '12px',
-        lineHeight: '2em'
+      title: {
+        fontSize: '16px',
+        lineHeight: '2em',
+        fontWeight: '600',
+        color: '#000000'
+      },
+      description: {
+        fontSize: '16px',
+        lineHeight: '2em',
+        fontWeight: '600',
+        color: '#9B9B9B'
+      },
+      url: {
+        fontSize: '16px',
+        lineHeight: '2em',
+        fontWeight: '600',
+        color: '#2B8D8E'
+      },
+      img: {
+        width: '200px',
+        height: '120px',
+        paddingTop: '20px'
+      },
+      div: {
+        display: 'inline-flex'
       }
+    }
     };
-  }
+
 
   render() {
     const styles = this.getDefaultStyles();
@@ -140,12 +164,18 @@ class App extends Component {
               {this.state.isFetching ? <span style={styles.scrapeSpan}>Scraping...</span> : <button style={styles.button} onClick={this.scrape}>Scrape</button>}
             </span>
             {this.state.validationString ? <span style={styles.validationSpan}>{this.state.validationString}</span> : null}
+            <div style={styles.div}>
+              <div>
+            <a>{this.state.meta.image ? <img style={styles.img} src={this.state.meta.image} alt="Not found" /> : null}</a>
+              </div>
+              <div>
             <ul style={styles.ul}>
-              <li style={styles.li}>{this.state.meta.image ? <img width="300px" height="200px" src={this.state.meta.image} alt="Not found" /> : null}</li>
-              <li style={styles.li}>{this.state.meta.url ? <span><strong>URL:</strong> {this.state.meta.url}</span> : null}</li>
-              <li style={styles.li}>{this.state.meta.title ? <span><strong>Title:</strong> {this.state.meta.title}</span> : null}</li>
-              <li style={styles.li}>{this.state.meta.description ? <span><strong>Description: </strong> {this.state.meta.description}</span> : null}</li>
+              <li style={styles.title}>{this.state.meta.title ? <span>{this.state.meta.title}</span> : null}</li>
+              <li style={styles.description}>{this.state.meta.description ? <span> {this.state.meta.description}</span> : null}</li>
+              <li style={styles.url}>{this.state.meta.url ? <span> {this.state.meta.url}</span> : null}</li>
             </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
